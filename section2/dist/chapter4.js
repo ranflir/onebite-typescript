@@ -19,4 +19,15 @@ let user2 = {
     weight: 90,
     location: 'seoul',
 };
+let countryCodes = {
+    Korea: 'ko',
+    UnitedState: 'us',
+    UnitedKingdom: 'uk',
+};
+//인덱스 시그니쳐 주의사항 : 내부 프로퍼티를 모두 삭제해도 오류가 발생하지 않음
+let countryNumberCodes = {
+    Korea: 410,
+    UnitedState: 840,
+    UnitedKingdom: 826,
+};
 export {};
