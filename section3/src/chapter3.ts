@@ -1,54 +1,27 @@
 /*
- 
- unknown 전체 타입*/
+객체타입간의 호환성
 
-function unknownExam() {
-  let a: unknown = 1;
-  let b: unknown = 'hell';
-  let c: unknown = true;
-  let d: unknown = null;
-  let e: unknown = undefined;
-  //이렇게 업캐스팅은 가능하다 (다운캐스팅은 안됨)
-}
-
-/*
-never타입
-
-불가능을 표현
-
-네버타입은 모든 타입의 서브타입
-공집합
+기본타입간은 서로 어쩌고 해도 되는지
 
 */
 
-function neverExam() {
-  // 이 함수는 공집합이다~ never
-  function neverFunc(): never {
-    while (true) {}
-  }
-  let num: number = neverFunc(); //다운캐스팅은 가능
-}
-/*void 타입 
+let num1: number = 1;
+let num2: 10 = 10;
 
-*/
+num1 = num2;
+//리터럴 타입은 들어간다
 
-function voidExam() {
-  function voidFunc(): void {
-    console.log('shit');
-    return undefined;
-  }
+//구조적 타입 시스템
+type Animal = {
+  //슈퍼타입
+  name: string;
+  color: string;
+};
+type Dog = {
+  //서브타입
+  name: string;
+  color: string;
+  breed: string;
+};
 
-  let voidVar: void = undefined; //undefined 타입은 보이드의 하위라서, 들어갈 수 있다
-}
-
-/*any type
-
-타입 계층도를 무시한다. 계층도상에서는 언노운 밑이지만 다 무시함*/
-
-function antExam() {
-  let unknownVar: unknown;
-
-  let neverVar: never;
-  let anyVar: any;
-  // neverVar = anyVar; //이건안됨 : never는 순수한 공집합이라서 더 들어갈 수가 없다
-}
+//초과 프로퍼티 검사 : 변수를 초기화 할때, 객체 리터럴을 사용하면, 실제 프러퍼티에 없는 걸 추가하는걸 막는 기능
